@@ -1,6 +1,8 @@
 import { registerSW } from 'virtual:pwa-register'
 
-type Listener = () => void
+export type PwaEvent = 'need-refresh' | 'offline-ready'
+
+type Listener = (event: PwaEvent) => void
 
 const listeners = new Set<Listener>()
 let offlineReady = false
@@ -20,11 +22,14 @@ export function initPWA(): void {
   registerSW({
     immediate: true,
     onNeedRefresh() {
-      listeners.forEach((l) => l())
+      // 首次安装时，新 SW 同样处于 waiting 状态 —— 那不是「发现了新版本」，
+      // 只有在页面本来就有 controller（说明这是一次更新而非首装）时才提示。
+      if (!hadController) return
+      listeners.forEach((l) => l('need-refresh'))
     },
     onOfflineReady() {
       offlineReady = true
-      listeners.forEach((l) => l())
+      listeners.forEach((l) => l('offline-ready'))
     },
   })
 
@@ -40,7 +45,6 @@ export function onPwaEvent(fn: Listener): () => void {
     listeners.delete(fn)
   }
 }
-
 /** 让等待中的新 SW 立刻接管 */
 export function applyUpdate(): void {
   if (typeof navigator === 'undefined' || !('serviceWorker' in navigator)) return

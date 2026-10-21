@@ -6,7 +6,9 @@ export function usePwaUpdate(): { needRefresh: boolean; update: () => void } {
   const [needRefresh, setNeedRefresh] = useState(false)
 
   useEffect(() => {
-    return onPwaEvent(() => setNeedRefresh(true))
+    return onPwaEvent((event) => {
+      if (event === 'need-refresh') setNeedRefresh(true)
+    })
   }, [])
 
   const update = () => {
