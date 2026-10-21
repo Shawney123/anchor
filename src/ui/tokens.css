@@ -1,0 +1,136 @@
+/* ═══════════════════════════════════════════════════════════
+   Anchor · 设计令牌
+   暗色为默认设计态（这类产品的高频场景是晚上坐在桌前启动任务）
+   亮色是跟随系统的适配态；也支持在设置里强制常暗 / 常亮
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── 色彩 · 暗色 ── */
+  --bg: #0b0e14;
+  --surface: #121826;
+  --surface-2: #18202f;
+  --surface-3: #202a3b;
+  --border: #1f2634;
+  --border-strong: #2c3648;
+  --text: #e8ecf4;
+  --text-2: #9aa6bc;
+  --text-3: #7c879b;
+  --accent: #e9b44c;
+  --accent-soft: rgba(233, 180, 76, 0.12);
+  --accent-line: rgba(233, 180, 76, 0.38);
+  /* 强调色上的文字：亮琥珀用深字，暗琥珀用白字 */
+  --on-accent: #0b0e14;
+  --success: #5fd08a;
+  --success-soft: rgba(95, 208, 138, 0.12);
+  --danger: #f2707a;
+  --danger-soft: rgba(242, 112, 122, 0.1);
+  --info: #6fa8dc;
+  --info-soft: rgba(111, 168, 220, 0.12);
+
+  --scrim: rgba(4, 6, 11, 0.72);
+
+  /* ── 间距 · 8pt 栅格 ── */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-7: 32px;
+  --sp-8: 40px;
+  --sp-9: 56px;
+
+  /* ── 圆角 ── */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-full: 999px;
+
+  /* ── 字体 ── */
+  --font-display: 'Instrument Serif', 'Songti SC', 'Source Han Serif SC', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, 'HarmonyOS Sans SC', 'MiSans',
+    'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --fs-display: 2.75rem;
+  --fs-h1: 1.5rem;
+  --fs-h2: 1.1875rem;
+  --fs-h3: 1.0625rem;
+  --fs-body: 1rem;
+  --fs-body-sm: 0.9063rem;
+  --fs-caption: 0.7813rem;
+  --fs-mono: 0.8125rem;
+
+  /* ── 动效 ── */
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --t-micro: 120ms;
+  --t-fast: 200ms;
+  --t-base: 280ms;
+  --t-slow: 420ms;
+
+  /* ── 布局 ── */
+  --nav-h: 64px;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-t: env(safe-area-inset-top, 0px);
+  --gutter: 20px;
+  --tap: 48px;
+  /* 移动优先；桌面端收窄成一列，避免内容被拉散 */
+  --col: 560px;
+
+  --shadow-pop: 0 8px 28px rgba(0, 0, 0, 0.55);
+}
+
+/* ── 亮色令牌 ── */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    --bg: #fbfaf7;
+    --surface: #ffffff;
+    --surface-2: #f4f2ed;
+    --surface-3: #ebe8e1;
+    --border: #e5e1d8;
+    --border-strong: #d2ccbf;
+    --text: #14181f;
+    --text-2: #4e5a6b;
+    --text-3: #6e7887;
+    --accent: #9a6b12;
+    --accent-soft: rgba(154, 107, 18, 0.1);
+    --accent-line: rgba(154, 107, 18, 0.32);
+    --on-accent: #ffffff;
+    --success: #1e7f4e;
+    --success-soft: rgba(30, 127, 78, 0.1);
+    --danger: #c4353f;
+    --danger-soft: rgba(196, 53, 63, 0.08);
+    --info: #2b6cb0;
+    --info-soft: rgba(43, 108, 176, 0.1);
+    --scrim: rgba(24, 22, 18, 0.42);
+    --shadow-pop: 0 10px 30px rgba(40, 34, 24, 0.16);
+  }
+}
+
+:root[data-theme='light'] {
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --surface-2: #f4f2ed;
+  --surface-3: #ebe8e1;
+  --border: #e5e1d8;
+  --border-strong: #d2ccbf;
+  --text: #14181f;
+  --text-2: #4e5a6b;
+  --text-3: #6e7887;
+  --accent: #9a6b12;
+  --accent-soft: rgba(154, 107, 18, 0.1);
+  --accent-line: rgba(154, 107, 18, 0.32);
+  --on-accent: #ffffff;
+  --success: #1e7f4e;
+  --success-soft: rgba(30, 127, 78, 0.1);
+  --danger: #c4353f;
+  --danger-soft: rgba(196, 53, 63, 0.08);
+  --info: #2b6cb0;
+  --info-soft: rgba(43, 108, 176, 0.1);
+  --scrim: rgba(24, 22, 18, 0.42);
+  --shadow-pop: 0 10px 30px rgba(40, 34, 24, 0.16);
+}
