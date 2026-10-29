@@ -56,6 +56,8 @@ npm run test       # 领域层单元测试
 
 ### 部署到 GitHub Pages
 
+**在线地址：** <https://shawney123.github.io/anchor/>
+
 1. 把仓库推到 GitHub，仓库名建议 `anchor`。
 2. **Settings → Pages → Source 选 `GitHub Actions`**。
 3. 推送到 `main` 分支即自动构建部署。
